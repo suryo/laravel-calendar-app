@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\TaskController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', [CalendarController::class, 'index'])->name('calendar.index');
+Route::get('/calendar', [CalendarController::class, 'show'])->name('calendar.show');
+Route::post('/tasks', [TaskController::class, 'store'])->name('tasks.store');
